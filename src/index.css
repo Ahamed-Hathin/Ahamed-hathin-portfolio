@@ -1,0 +1,372 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #1a1a29;
+  --color-brand-100: #292929;
+  --color-brand-200: #3a3a4c;
+  --color-brand-300: #4f4f66;
+  --color-brand-400: #8888aa;
+  --color-brand-500: #a0a0c0;
+  --color-brand-600: #b5b5d5;
+  --color-brand-700: #c4c4c4;
+  --color-brand-800: #e2e2e2;
+  --color-brand-900: #ffffff;
+  --color-brand-950: #ffffff;
+
+  --color-bg-primary: #11111b;
+  --color-bg-secondary: #1a1a29;
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #c4c4c4;
+  --color-accent: #cf59e6;
+  
+  --font-sans: "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "Fira Code", monospace;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-tech: "Orbitron", sans-serif;
+  --font-serif-display: "Playfair Display", Georgia, serif;
+}
+
+@layer base {
+  body {
+    @apply bg-[#11111b] text-white antialiased selection:bg-[#cf59e6] selection:text-white font-sans;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@utility grid-bg {
+  background-size: 80px 80px;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+}
+
+@keyframes rubberBand {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+  30% {
+    transform: scale3d(1.25, 0.75, 1);
+  }
+  40% {
+    transform: scale3d(0.75, 1.25, 1);
+  }
+  50% {
+    transform: scale3d(1.15, 0.85, 1);
+  }
+  65% {
+    transform: scale3d(0.95, 1.05, 1);
+  }
+  75% {
+    transform: scale3d(1.05, 0.95, 1);
+  }
+  to {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+.jello-letter {
+  display: inline-block;
+  cursor: default;
+  transition: color 0.25s ease, text-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.jello-letter:hover {
+  animation: rubberBand 0.8s ease;
+  color: #cf59e6;
+  text-shadow: 0 0 12px rgba(207, 89, 230, 0.5);
+}
+
+.jello-letter-blue:hover {
+  animation: rubberBand 0.8s ease;
+  color: #6bc5f8;
+  text-shadow: 0 0 12px rgba(107, 197, 248, 0.5);
+}
+
+.text-stroke-outline {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.04);
+  color: transparent;
+  transition: -webkit-text-stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1), filter 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.group:hover .text-stroke-outline {
+  -webkit-text-stroke: 1.5px rgba(207, 89, 230, 0.25);
+  filter: drop-shadow(0 0 8px rgba(207, 89, 230, 0.15));
+}
+
+/* ============================================
+   SHOOTING STARS BACKGROUND (lightning effect)
+   ============================================ */
+.shooting-stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shooting-star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: linear-gradient(45deg, #fff, transparent);
+  border-radius: 50%;
+  opacity: 0;
+  animation: shootingStar linear infinite;
+}
+
+.shooting-star::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 80px;
+  height: 1.5px;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7), rgba(107, 197, 248, 0.4), transparent);
+  border-radius: 100%;
+}
+
+.shooting-star:nth-child(1) {
+  top: 8%;
+  left: 15%;
+  animation-duration: 2.8s;
+  animation-delay: 0.5s;
+}
+
+.shooting-star:nth-child(2) {
+  top: 15%;
+  left: 55%;
+  animation-duration: 3.5s;
+  animation-delay: 2.0s;
+}
+
+.shooting-star:nth-child(3) {
+  top: 5%;
+  left: 80%;
+  animation-duration: 2.2s;
+  animation-delay: 4.5s;
+}
+
+.shooting-star:nth-child(4) {
+  top: 25%;
+  left: 35%;
+  animation-duration: 4.0s;
+  animation-delay: 1.5s;
+}
+
+.shooting-star:nth-child(5) {
+  top: 40%;
+  left: 70%;
+  animation-duration: 3.0s;
+  animation-delay: 6.0s;
+}
+
+.shooting-star:nth-child(6) {
+  top: 12%;
+  left: 90%;
+  animation-duration: 2.5s;
+  animation-delay: 3.5s;
+}
+
+.shooting-star:nth-child(7) {
+  top: 55%;
+  left: 20%;
+  animation-duration: 3.8s;
+  animation-delay: 8.0s;
+}
+
+.shooting-star:nth-child(8) {
+  top: 35%;
+  left: 50%;
+  animation-duration: 2.6s;
+  animation-delay: 5.0s;
+}
+
+.shooting-star:nth-child(9) {
+  top: 20%;
+  left: 10%;
+  animation-duration: 3.2s;
+  animation-delay: 7.0s;
+}
+
+.shooting-star:nth-child(10) {
+  top: 60%;
+  left: 65%;
+  animation-duration: 2.9s;
+  animation-delay: 9.5s;
+}
+
+@keyframes shootingStar {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(-45deg);
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-600px, 600px) rotate(-45deg);
+  }
+}
+
+/* ============================================
+   GIANT TWO-COLOR BREATHING BACKGROUND BLOB
+   ============================================ */
+.blob {
+  position: absolute;
+  right: -15%;
+  top: 0;
+  background-color: #cf59e6;
+  width: 600px;
+  height: 100vh;
+  filter: blur(220px);
+  opacity: 0.18;
+  animation: 3.5s ease-in-out infinite alternate breath;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes breath {
+  from {
+    opacity: 0.12;
+    transform: scale(0.95) translate(10px, -10px);
+  }
+  to {
+    opacity: 0.24;
+    transform: scale(1.05) translate(-10px, 10px);
+  }
+}
+
+/* ============================================
+   INFINITE SHIFTING GRADIENT TEXT
+   ============================================ */
+.shifting-gradient-text {
+  background: linear-gradient(120deg, #6bc5f8, #cf59e6, #03e6ff, #a370f7, #6bc5f8);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGradientShift 6s ease-in-out infinite;
+}
+
+@keyframes textGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.jello-hover-effect {
+  display: inline-block;
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+.jello-hover-effect:hover {
+  animation: rubberBand 0.8s ease;
+  background-image: none !important;
+  -webkit-text-fill-color: #03e6ff !important;
+  color: #03e6ff !important;
+  filter: drop-shadow(0 0 8px rgba(3, 230, 255, 0.6)) !important;
+}
+
+/* From Uiverse.io by adamgiebl */ 
+.cssbuttons-io-button {
+  background: #a370f0;
+  color: white;
+  font-family: inherit;
+  padding: 0.35em;
+  padding-left: 1.2em;
+  font-size: 17px;
+  font-weight: 500;
+  border-radius: 2em;
+  border: none;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  box-shadow: inset 0 0 1.6em -0.6em #714da6;
+  overflow: hidden;
+  position: relative;
+  height: 2.8em;
+  padding-right: 3.3em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.cssbuttons-io-button:hover {
+  transform: translateY(-2px);
+  box-shadow: inset 0 0 1.6em -0.6em #714da6, 0 8px 24px rgba(163, 112, 240, 0.35);
+}
+
+.cssbuttons-io-button .icon {
+  background: white;
+  margin-left: 1em;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2.2em;
+  width: 2.2em;
+  border-radius: 9999px;
+  box-shadow: 0.1em 0.1em 0.6em 0.2em #7b52b9;
+  right: 0.3em;
+  transition: all 0.3s;
+}
+
+.cssbuttons-io-button:hover .icon {
+  width: calc(100% - 0.6em);
+  border-radius: 9999px;
+}
+
+.cssbuttons-io-button .icon svg {
+  width: 1.1em;
+  transition: transform 0.3s;
+  color: #7b52b9;
+}
+
+.cssbuttons-io-button:hover .icon svg {
+  transform: translateX(0.1em) scale(1.1);
+}
+
+.cssbuttons-io-button:active .icon {
+  transform: scale(0.95);
+}
+
+.cssbuttons-io-button:active {
+  transform: scale(0.97) translateY(0);
+}
+
+.jello-hover-effect-white {
+  display: inline-block;
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+.jello-hover-effect-white:hover {
+  animation: rubberBand 0.8s ease;
+  color: #cf59e6 !important;
+  filter: drop-shadow(0 0 8px rgba(207, 89, 230, 0.6)) !important;
+}
+
+
