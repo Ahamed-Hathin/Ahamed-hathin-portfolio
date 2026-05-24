@@ -21,31 +21,33 @@ const itemVariants = {
 };
 
 const renderJelloText = (text: string) => {
-  return text.split('').map((char, idx) => {
-    if (char === ' ') return <span key={idx} className="inline-block">&nbsp;</span>;
-    return (
-      <span
-        key={idx}
-        className="jello-hover-effect text-transparent"
-      >
-        {char}
-      </span>
-    );
-  });
+  return text.split(' ').map((word, wordIdx) => (
+    <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+      {word.split('').map((char, charIdx) => (
+        <span
+          key={charIdx}
+          className="jello-hover-effect text-transparent"
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  ));
 };
 
 const renderJelloTextWhite = (text: string) => {
-  return text.split('').map((char, idx) => {
-    if (char === ' ') return <span key={idx} className="inline-block">&nbsp;</span>;
-    return (
-      <span
-        key={idx}
-        className="jello-hover-effect-white text-white"
-      >
-        {char}
-      </span>
-    );
-  });
+  return text.split(' ').map((word, wordIdx) => (
+    <span key={wordIdx} className="inline-block whitespace-nowrap mr-[0.25em]">
+      {word.split('').map((char, charIdx) => (
+        <span
+          key={charIdx}
+          className="jello-hover-effect-white text-white"
+        >
+          {char}
+        </span>
+      ))}
+    </span>
+  ));
 };
 
 export function Hero() {
