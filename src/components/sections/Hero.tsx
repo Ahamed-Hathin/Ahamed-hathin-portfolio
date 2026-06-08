@@ -98,7 +98,7 @@ export function Hero() {
                 </span>
               </span>
               <span className="block text-3xl sm:text-5xl md:text-6xl font-serif-display font-bold tracking-wide text-white normal-case mt-4 leading-tight">
-                {renderJelloTextWhite("MERN Stack Developer")}
+                {renderJelloTextWhite("MERN Stack Dev.")}
               </span>
             </motion.h1>
           </div>
