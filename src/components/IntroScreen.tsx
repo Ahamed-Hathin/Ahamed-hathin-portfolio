@@ -6,11 +6,11 @@ export const IntroScreen = ({ onComplete }: { onComplete: () => void }) => {
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Hide the intro screen after 3.5 seconds
+    // Hide the intro screen after 4 seconds
     const timer = setTimeout(() => {
       setIsVisible(false);
       setTimeout(onComplete, 500); // Wait for exit animation to finish
-    }, 3500);
+    }, 4000);
     return () => clearTimeout(timer);
   }, [onComplete]);
 
@@ -56,14 +56,31 @@ export const IntroScreen = ({ onComplete }: { onComplete: () => void }) => {
 
           {/* Title */}
           <div className="text-center font-bold tracking-wide relative z-10">
-            <h1 className="text-3xl md:text-4xl text-white mb-3 flex justify-center gap-2 md:gap-3">
-              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.9, ease: "easeOut" }}>Welcome</motion.span>
-              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.05, ease: "easeOut" }}>To</motion.span>
-              <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.2, ease: "easeOut" }}>My</motion.span>
+            <h1 className="text-3xl md:text-4xl text-white mb-3 flex justify-center flex-wrap">
+              {"Welcome To My".split("").map((char, index) => (
+                <motion.span 
+                  key={index} 
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.5, delay: 0.8 + index * 0.05, ease: "easeOut" }}
+                  className={char === " " ? "w-2 md:w-3" : ""}
+                >
+                  {char}
+                </motion.span>
+              ))}
             </h1>
-            <h1 className="text-3xl md:text-4xl flex justify-center gap-2 md:gap-3">
-              <motion.span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.35, ease: "easeOut" }}>Portfolio</motion.span>
-              <motion.span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}>Website</motion.span>
+            <h1 className="text-3xl md:text-4xl flex justify-center flex-wrap">
+              {"Portfolio Website".split("").map((char, index) => (
+                <motion.span 
+                  key={index} 
+                  className={`text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 ${char === " " ? "w-2 md:w-3" : ""}`}
+                  initial={{ opacity: 0, y: 20 }} 
+                  animate={{ opacity: 1, y: 0 }} 
+                  transition={{ duration: 0.5, delay: 1.5 + index * 0.05, ease: "easeOut" }}
+                >
+                  {char}
+                </motion.span>
+              ))}
             </h1>
           </div>
 
